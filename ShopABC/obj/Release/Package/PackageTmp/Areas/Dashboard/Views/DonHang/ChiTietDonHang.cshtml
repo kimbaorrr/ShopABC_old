@@ -1,0 +1,133 @@
+﻿@using ShopABC.Areas.Dashboard.Models
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    DonHang x = ViewData["TTDonHang"] as DonHang;
+}
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <div class="row">
+                    <div class="col-auto">
+                        <h3>@ViewBag.Title</h3>
+                    </div>
+                    <div class="col-auto d-flex align-items-center">
+                        @{
+                            switch (x.MaTT)
+                            {
+                                case 5:
+                                    <span class="badge bg-secondary">@x.dh_TinhTrang.TenTT</span>
+                                    break;
+                                case 1:
+                                    <span class="badge bg-danger">@x.dh_TinhTrang.TenTT</span>
+                                    break;
+                                case 2:
+                                    <span class="badge bg-warning">@x.dh_TinhTrang.TenTT</span>
+                                    break;
+                                case 6:
+                                    <span class="badge bg-success">@x.dh_TinhTrang.TenTT</span>
+                                    break;
+                                case 7:
+                                    <span class="badge bg-danger">@x.dh_TinhTrang.TenTT</span>
+                                    break;
+                            }
+                        }
+                    </div>
+                </div>
+               
+                <p class="text-subtitle text-muted">Trang hiển thị chi tiết đơn hàng</p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href='@Url.Action("Index", "Home")'>Bảng điều khiển</a></li>
+                        <li class="breadcrumb-item active">@ViewBag.Title</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-12 col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Thông tin giao hàng</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Khách hàng: @ShopABC_KhachHang.get_TenKhachHang_Theo_MaKH(x.MaKH)</p>
+                        <p class="mt-1">Địa chỉ: @x.KhachHang.DiaChi</p>
+                        <p class="mt-1">Số điện thoại: <a href="tel:@x.KhachHang.SDT">@x.KhachHang.SDT</a></p>
+                        <p class="mt-1">Email: <a href="mailto:@x.KhachHang.Email">@x.KhachHang.Email</a></p>
+                        <p class="mt-1">Ghi chú giao hàng: @x.GhiChu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Thông tin đơn hàng</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Số hóa đơn: @x.SoHD</p>
+                        <p class="mt-1">Sản phẩm đặt mua: @x.ChiTietDonHangs.Count()</p>
+                        <p class="mt-1">Ngày mua: @x.NgayMua.Value.ToString("dd/MM/yyyy")</p>
+                        <p class="mt-1">Ngày giao: @x.NgayGiao.Value.ToString("dd/MM/yyyy")</p>
+                        @{
+                            if (x.DaGiao == null)
+                            {
+                                <p class="mt-1">Ngày nhận hàng: N/A</p>
+                            }
+                            else
+                            {
+                                <p class="mt-1">Ngày nhận hàng: @x.DaGiao.Value.ToString("dd/MM/yyyy")</p>
+                            }
+                        }
+
+                        <p class="mt-1">Tổng thanh toán: <span class="text-danger fw-bold">@String.Format("{0:0,0}", x.TongGT)</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Sản phẩm đặt mua</h4>
+                    </div>
+                    <div class="card-body overflow-auto">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá bán</th>
+                                    <th>Giảm giá (%)</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (ChiTietDonHang i in x.ChiTietDonHangs.ToList())
+                                {
+                                    <tr>
+                                        <td>@i.MaSP</td>
+                                        <td>@i.SanPham.TenSP</td>
+                                        <td>@i.SoLuong</td>
+                                        <td>@String.Format("{0:0,0}", i.SanPham.GiaBan)</td>
+                                        <td>@i.SanPham.GiamGia</td>
+                                        <td>@String.Format("{0:0,0}", i.ThanhTien)</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

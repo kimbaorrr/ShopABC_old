@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="714a73ea5bfa464e9d0216301aa31106" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="ShopABC_Model.BaiViet" Width="1.5" PointX="12.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.DanToc" Width="1.5" PointX="7.375" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.DanhMucSP" Width="1.5" PointX="10.875" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.HangSX" Width="1.5" PointX="10.875" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.kh_NhanXet" Width="1.5" PointX="18.125" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.LoaiSP" Width="1.5" PointX="8.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.MauSac" Width="1.5" PointX="4.875" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.nv_DangNhap" Width="1.5" PointX="18.375" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.NhanVien" Width="1.5" PointX="10.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.SanPham" Width="1.5" PointX="13.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopABC_Model.TonGiao" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
+        <AssociationConnector Association="ShopABC_Model.FK__BaiViet__MaNV__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopABC_Model.FK__NhanVien__MaDT__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopABC_Model.FK__DanhMucSP__MaLoa__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopABC_Model.FK__SanPham__MaDM__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopABC_Model.FK__SanPham__MaHSX__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopABC_Model.FK__kh_NhanXet__MaSP__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopABC_Model.FK__nv_DangNha__MaNV__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopABC_Model.FK__NhanVien__MaTG__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopABC_Model.FK__BaiViet__MaSP__42ACE4D4" />
+        <EntityTypeShape EntityType="ShopABC_Model.nv_HinhAnh" Width="1.5" PointX="12.75" PointY="13.375" />
+        <AssociationConnector Association="ShopABC_Model.FK__nv_HinhAnh__MaNV__2BFE89A6" />
+        <AssociationConnector Association="ShopABC_Model.FK__SanPham__MaMau__4F12BBB9" />
+        <EntityTypeShape EntityType="ShopABC_Model.dh_TinhTrang" Width="1.5" PointX="4" PointY="11.375" />
+        <EntityTypeShape EntityType="ShopABC_Model.ChiTietDonHang" Width="1.5" PointX="18.125" PointY="9.375" />
+        <AssociationConnector Association="ShopABC_Model.FK__ChiTietDon__MaSP__56B3DD81" />
+        <EntityTypeShape EntityType="ShopABC_Model.DonHang" Width="1.5" PointX="15.75" PointY="11.375" />
+        <AssociationConnector Association="ShopABC_Model.FK__ChiTietDon__SoHD__55BFB948" />
+        <AssociationConnector Association="ShopABC_Model.FK__DonHang__MaTT__52E34C9D" />
+        <EntityTypeShape EntityType="ShopABC_Model.Banner_TrangChu" Width="1.5" PointX="16.125" PointY="7.25" />
+        <AssociationConnector Association="ShopABC_Model.FK__SanPham__MaNV__7AF13DF7" />
+        <EntityTypeShape EntityType="ShopABC_Model.KhachHang" Width="1.5" PointX="7.5" PointY="9.25" />
+        <AssociationConnector Association="ShopABC_Model.FK__HoaDon__MaKH__3C34F16F" />
+        <AssociationConnector Association="ShopABC_Model.FK__kh_NhanXet__MaKH__55F4C372" />
+        <EntityTypeShape EntityType="ShopABC_Model.His" Width="1.5" PointX="5.75" PointY="8.75" />
+        <AssociationConnector Association="ShopABC_Model.FK__His__MaNV__0EF836A4" />
+        <EntityTypeShape EntityType="ShopABC_Model.ChucVu" Width="1.5" PointX="7.875" PointY="17.25" />
+        <EntityTypeShape EntityType="ShopABC_Model.PhanQuyen" Width="1.5" PointX="15.5" PointY="15.5" />
+        <AssociationConnector Association="ShopABC_Model.FK__NhanVien__MaCV__23F3538A" />
+        <AssociationConnector Association="ShopABC_Model.FK__PhanQuyen__MaCV__26CFC035" />
+        <EntityTypeShape EntityType="ShopABC_Model.Blog" Width="1.5" PointX="13.125" PointY="20.625" />
+        <EntityTypeShape EntityType="ShopABC_Model.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="ShopABC_Model.FK__Blog__MaNV__6A85CC04" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

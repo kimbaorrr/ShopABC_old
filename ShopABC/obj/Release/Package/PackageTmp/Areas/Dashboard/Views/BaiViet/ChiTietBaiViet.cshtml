@@ -1,0 +1,209 @@
+﻿@using ShopABC.Areas.Dashboard.Models
+
+@{
+    ViewBag.Title = "Chi tiết bài viết";
+    @model ShopABC_ChiTietBaiViet
+    string[] hinhbv = Session["bv-hinhbv"].ToString().Split('#');
+}
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>@ViewBag.Title</h3>
+                <p class="text-subtitle text-muted">Trang hiển thị chi tiết bài viết</p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href='@Url.Action("Index", "Home")'>Bảng điều khiển</a></li>
+                        <li class="breadcrumb-item active">@ViewBag.Title</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("ChiTietBaiViet", "BaiViet", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <section class="section">
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <h4 class="card-title pb-3">Thông tin bài viết</h4>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.TenBV, new { @class = "fw-bold" })<span class="text-danger"> *</span>
+                                    @Html.TextBoxFor(m => m.TenBV, new { @class = "form-control mt-1", @readonly = "" })
+                                    @Html.ValidationMessageFor(m => m.TenBV, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.MoTa, new { @class = "fw-bold" })
+                                    @Html.TextAreaFor(m => m.MoTa, new { @class = "form-control mt-1", @rows = "6" })
+                                    @Html.ValidationMessageFor(m => m.MoTa, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-lg-4 mb-1">
+                                        <div class="form-group mb-3">
+                                            @Html.LabelFor(m => m.NgayDang, new { @class = "fw-bold" })
+                                            @Html.TextBoxFor(m => m.NgayDang, new { @class = "form-control mt-1", @readonly = "" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb-1">
+                                        <div class="form-group mb-3">
+                                            <label class="fw-bold">Nhân viên</label>
+                                            <input type="text" class="form-control mt-1" value="@ShopABC_NhanVien.get_HoTen((int)Session["bv-manv"])" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb-1">
+                                        <div class="form-group mb-3">
+                                            <label class="fw-bold">Số lần đọc</label>
+                                            <input type="text" class="form-control mt-1" value="0" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <h4 class="card-title pb-3">Hình bài viết</h4>
+                                <ul class="list-group">
+                                    @foreach (string i in hinhbv)
+                                    {
+                                        <li class="list-group-item"><a class="fw-bold" href="/Content/uploads/images/BaiViet/@i" target="_blank">@i</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Nội dung bài viết</h4>
+                        </div>
+                        <div class="card-body">
+                            @Html.TextAreaFor(m => m.NoiDung, new { @class = "form-control mt-1", @rows = "6", @id = "summernote" })
+                            @Html.ValidationMessageFor(m => m.NoiDung, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title pb-3">Thông tin sản phẩm</h4>
+                            <span class="text-danger fw-bold">Bài viết này sẽ quảng cáo cho:</span>
+                            <div class="row mt-4">
+                                <div class="col-md-4 mb-1">
+                                    <div class="form-group mb-3">
+                                        @Html.LabelFor(m => m.MaLoai, new { @class = "fw-bold" })<span class="text-danger"> *</span>
+                                        @Html.DropDownListFor(m => m.MaLoai, new SelectList(ShopABC_SanPham.get_LoaiSP(), "MaLoai", "TenLoai"), new { @class = "form-select mt-1", @style = "pointer-events: none;" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-1">
+                                    <div class="form-group mb-3">
+                                        @Html.LabelFor(m => m.MaDM, new { @class = "fw-bold" })<span class="text-danger"> *</span>
+                                        @Html.DropDownListFor(m => m.MaDM, new SelectList(ShopABC_SanPham.get_DanhMucSP(), "MaDM", "TenDM"), new { @class = "form-select mt-1", @style = "pointer-events: none;" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-1">
+                                    <div class="form-group mb-3">
+                                        @Html.LabelFor(m => m.MaSP, new { @class = "fw-bold" })<span class="text-danger"> *</span>
+                                        @Html.DropDownListFor(m => m.MaSP, new SelectList(ShopABC_SanPham.get_SanPham(), "MaSP", "TenSP"), new { @class = "form-select mt-1", @style = "pointer-events: none;" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <button type="submit" name="hanhdong" value="suadoi" class="btn btn-warning mx-auto d-block">Sửa đổi</button>
+                </div>
+                <div class="col-4">
+                    <button type="submit" name="hanhdong" value="xoabo" class="btn btn-danger mx-auto d-block">Xóa bỏ</button>
+                </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-secondary mx-auto d-block" onclick='location.href="@Url.Action("TatCaBaiViet", "BaiViet")"'>Trở lại</button>
+                </div>
+            </div>
+        </section>
+    }
+</div>
+
+@section More_Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
+    <!-- Need: SummerNote -->
+    <script>
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 500,
+            focus: false,
+            spellCheck: false,
+            disableGrammar: false,
+            codeviewFilter: false,
+            codeviewIframeFilter: true,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['codeview', 'help']],
+            ],
+            popover: {
+                image: [
+                    ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                    ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                    ['remove', ['removeMedia']]
+                ],
+                link: [
+                    ['link', ['linkDialogShow', 'unlink']]
+                ],
+                table: [
+                    ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                    ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                ],
+                air: [
+                    ['color', ['color']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['para', ['ul', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']]
+                ]
+            },
+        })
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#hinhbv')
+                        .attr('src', e.target.result)
+                        .width("100%")
+                        .height("100%");
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.min.js"></script>
+}
+@section More_CSS {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.min.css" />
+}
+

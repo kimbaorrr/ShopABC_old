@@ -1,0 +1,97 @@
+﻿@using System.Web.Optimization;
+
+@{
+    ViewBag.Title = "FAQs";
+}
+
+@section More_CSS {
+    @Styles.Render("~/bundles/pub-faq-css")
+}
+
+@section Breadcum {
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>@ViewBag.Title</h4>
+                        <div class="breadcrumb__links">
+                            <a href='@Url.Action("Index", "Home")'>Trang chủ</a>
+                            <span>@ViewBag.Title</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+}
+
+<!-- FAQ Section Begin -->
+<section class="FAQ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-4 col-sm-6">
+                <div class="about__item">
+                    <div class="faq_area section_padding_130" id="faq">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <!-- Section Heading-->
+                                    <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                                        <h3>Câu hỏi thường gặp</h3>
+                                        <br />
+                                        <div class="line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <!-- FAQ Area-->
+                                <div class="col-12 col-sm-10 col-lg-8">
+                                    <div class="accordion faq-accordian" id="faqAccordion">
+                                        <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                                            <div class="card-header" id="headingOne">
+                                                <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Sản phẩm có giống với màu và hình ảnh thực tế sản phẩm không??<span class="lni-chevron-up"></span></h6>
+                                            </div>
+                                            <div class="collapse" id="collapseOne" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                                                <div class="card-body">
+                                                    <p>Chào bạn, sản phẩm như hình bạn nhé. Màu sắc qua ảnh chụp sẽ có thể có chút chênh lệch không đáng kể so với thực tế ạ.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                                            <div class="card-header" id="headingTwo">
+                                                <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Sản phẩm báo hết hàng khi nào sẽ về lại hàng?<span class="lni-chevron-up"></span></h6>
+                                            </div>
+                                            <div class="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                                                <div class="card-body">
+                                                    <p>Chào bạn, hiện tại sản phẩm vẫn chưa về hàng, bạn theo dõi Fanpage và Website để cập nhật tình trạng sản phẩm nhé.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                                            <div class="card-header" id="headingThree">
+                                                <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Sản phẩm có được bảo hành không?<span class="lni-chevron-up"></span></h6>
+                                            </div>
+                                            <div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                                                <div class="card-body">
+                                                    <p>Chào bạn, Male Fashion hiện có chính sách bảo hành cho sản phẩm nhé. Bạn vui lòng truy cập vào <a class="text-primary" href="@Url.Action("BaoHanh", "ChinhSach")">liên kết</a> này để tìm hiểu thêm.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <span class="mb-0 px-2">Không tìm thấy câu trả lời?</span>
+                                        <a class="text-danger" href="@Url.Action("Index", "LienHe")"> Liên hệ với chúng tôi</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FAQ Section End -->
